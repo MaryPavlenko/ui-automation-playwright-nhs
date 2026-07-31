@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# pytest
+.pytest_cache/
+
+# Playwright / test artifacts
+test-results/
+playwright-report/
+playwright/.cache/
+allure-results/
+allure-report/
+
+# Environment variables and secrets
+.env
+*.env
+
+# OS files
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Auth state (generated at runtime, must not be committed)
+storage_state.json
