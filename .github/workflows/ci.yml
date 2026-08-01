@@ -26,11 +26,8 @@ jobs:
           pip install pytest-playwright
           playwright install --with-deps chromium
 
-      - name: Generate cookie consent state
-        run: python setup_auth.py
-
       - name: Run smoke tests
-        run: pytest -m smoke --browser chromium
+        run: pytest tests/booking_demo -m smoke --browser chromium
 
   full:
     name: Full suite (all browsers)
@@ -49,8 +46,5 @@ jobs:
           pip install pytest-playwright
           playwright install --with-deps
 
-      - name: Generate cookie consent state
-        run: python setup_auth.py
-
       - name: Run full suite
-        run: pytest --browser chromium --browser firefox --browser webkit
+        run: pytest tests/booking_demo --browser chromium --browser firefox --browser webkit

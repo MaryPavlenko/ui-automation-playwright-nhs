@@ -1,7 +1,7 @@
 import pytest
 from playwright.sync_api import Page, expect
 
-from pages.hub_page import HubPage
+from pages.nhs.hub_page import HubPage
 
 
 @pytest.mark.navigation

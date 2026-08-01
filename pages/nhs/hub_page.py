@@ -1,6 +1,6 @@
 from playwright.sync_api import Page
 
-from pages.base_page import BasePage
+from pages.nhs.base_page import BasePage
 
 
 class HubPage(BasePage):
