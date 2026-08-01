@@ -1,14 +1,10 @@
 # UI Automation [NHS Developer Hub]
-[![UI Tests](https://github.com/MaryPavlenko/ui-automation-playwright-nhs/actions/workflows/playwright.yml/badge.svg)](https://github.com/MaryPavlenko/ui-automation-playwright-nhs/actions/workflows/playwright.yml)
 [![Playwright](https://img.shields.io/badge/Playwright-Python-2EAD33)]() [![pytest](https://img.shields.io/badge/framework-pytest-blue)]() [![POM](https://img.shields.io/badge/pattern-Page%20Object%20Model-lightgrey)]() [![Cross-browser](https://img.shields.io/badge/cross--browser-Chromium%20%7C%20Firefox%20%7C%20WebKit-orange)]()
 
 ## Overview
 
 End-to-end UI automation of the NHS England Digital [Developer and integration hub](https://digital.nhs.uk/developer) using Playwright (Python), pytest and the Page Object Model.
-
-The goal of this project is to show a structured QA approach to UI automation: from test planning and test design techniques to a Page Object architecture, cross-browser execution, accessibility checks, and CI on GitHub Actions.
-
-**Object under test:** https://digital.nhs.uk/developer
+The goal of this project is to show a structured QA approach to UI automation: from test planning and test design techniques to a Page Object architecture, cross-browser execution, accessibility checks, and CI on GitHub Actions. <br> **Object under test:** https://digital.nhs.uk/developer
 
 The testing artifacts connect into one structured workflow:
 ```text
@@ -62,8 +58,8 @@ Python, Playwright (Python), pytest, Page Object Model, GitHub Actions.
 
 Techniques: equivalence partitioning, boundary value analysis, state transition, error guessing, data consistency checks, checklist-based verification, accessibility testing (axe-core), cross-browser testing.
 
-This is an independent QA portfolio project. It is not commissioned by, affiliated with, or endorsed by NHS England. All testing is performed against publicly available pages in read-only mode.
+This is an independent QA project. It is not commissioned by, affiliated with, or endorsed by NHS England. All testing is performed against publicly available pages in read-only mode.
 
 ## Author
 
-Created by [Mary Pavlenko](https://www.linkedin.com/in/mary-pavlenko/) as part of a QA Engineering portfolio.
+Created by [Mary Pavlenko](https://www.linkedin.com/in/mary-pavlenko/).
