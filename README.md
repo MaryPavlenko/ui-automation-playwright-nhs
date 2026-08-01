@@ -32,6 +32,14 @@ I defined the test scope and user journey, wrote the test plan and test cases, m
 
 The object under test is a third-party production website. Testing is deliberately constrained to avoid unnecessary load: read-only interactions only, no form submissions or authentication, limited parallelism, sampled coverage instead of exhaustive traversal, and a full suite scheduled daily rather than on every commit. Details are in the [test plan](docs/test-plan.md).
 
+## Test execution and CI
+
+The repository contains two test suites:
+- **NHS Developer hub suite** (`tests/nhs/`) — the main body of work, covering the user journey documented in the test plan. These tests run locally.
+- **Booking demo suite** (`tests/booking_demo/`) — a small suite against [automationintesting.online](https://automationintesting.online), a demo application built specifically for test automation practice. These tests run in CI.
+
+The split is deliberate. digital.nhs.uk is protected by a bot-mitigation service, and requests from CI data-centre IP addresses receive a security challenge instead of the site. Circumventing that protection would be both technically inappropriate and contrary to the respectful testing principles this project is built on, so the NHS suite is not executed from CI. To still demonstrate a working CI pipeline against a real browser, the booking demo suite runs on GitHub Actions: a smoke check on every push, and the full suite across Chromium, Firefox and WebKit on a daily schedule. Both suites share the same framework: Page Object Model, pytest markers, and Playwright web-first assertions.
+
 ## How to Run
 
 ```bash

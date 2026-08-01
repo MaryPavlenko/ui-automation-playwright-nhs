@@ -82,7 +82,18 @@ The object under test is a third-party production website. The following constra
 - No exhaustive traversal of catalogue pages or filter combinations
 - No form submissions, no account creation, no authentication attempts
 - Read-only interactions only
-- CI runs a small smoke set on push; the full suite runs on a daily schedule rather than on every commit
+- No attempt is made to bypass bot-mitigation measures
+
+### 9.1 Test execution environments
+
+The NHS suite is executed locally, not from CI. <br>
+[digital.nhs.uk](https://digital.nhs.uk/) is protected by a bot-mitigation service. Requests originating from CI data-centre IP addresses receive a security verification page instead of the site content, so the tests cannot reach the pages under test. Circumventing that protection is out of scope and would contradict the constraints in section 9. To validate the framework itself in a continuous integration environment, a separate small suite runs against automationintesting.online, a demo application published specifically for test automation practice. That suite exercises the same framework components (Page Object Model, pytest markers, Playwright assertions) and runs on GitHub Actions: a smoke check on push, and the full suite across Chromium, Firefox and WebKit on a daily schedule.
+
+Execution summary:
+| Suite | Location | Execution |
+|---|---|---|
+| NHS Developer hub | tests/nhs/ | Local, on demand |
+| Booking demo | tests/booking_demo/ | GitHub Actions: smoke on push, full suite daily |
 
 ### 10. Test levels and types
 - Functional UI regression
