@@ -1,0 +1,56 @@
+name: UI Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  smoke:
+    name: Smoke tests (chromium)
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          pip install pytest-playwright
+          playwright install --with-deps chromium
+
+      - name: Generate cookie consent state
+        run: python setup_auth.py
+
+      - name: Run smoke tests
+        run: pytest -m smoke --browser chromium
+
+  full:
+    name: Full suite (all browsers)
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: |
+          pip install pytest-playwright
+          playwright install --with-deps
+
+      - name: Generate cookie consent state
+        run: python setup_auth.py
+
+      - name: Run full suite
+        run: pytest --browser chromium --browser firefox --browser webkit
